@@ -1,4 +1,5 @@
 using ECommerceApp.Data;
+using ECommerceApp.Services;
 using Microsoft.EntityFrameworkCore;
 namespace ECommerceApp
 {
@@ -19,7 +20,7 @@ namespace ECommerceApp
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddScoped<CustomerService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
