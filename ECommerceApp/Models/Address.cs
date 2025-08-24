@@ -25,6 +25,10 @@ namespace ECommerceApp.Models
         [StringLength(50,ErrorMessage = "City cannot be excceds 50 characters")]
         public string City { get; set; }
 
+        [Required(ErrorMessage = "City is required")]
+        [StringLength(50, ErrorMessage = "State cannot be excceds 50 characters")]
+        public string State { get; set; }
+
         [Required(ErrorMessage = "postal code is required")]
         public string PostalCode { get; set; }
 
