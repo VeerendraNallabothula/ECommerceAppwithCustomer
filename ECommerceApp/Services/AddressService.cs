@@ -18,13 +18,12 @@ namespace ECommerceApp.Services
         {
             try
             {
-
-
-                var customer = _context.Customers.FindAsync(addressCreate.CustomerId);
+                var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == addressCreate.CustomerId);
                 if (customer == null)
                 {
                     return new ApiResponse<AddressResponseDTO>(404, "Customer not found");
                 }
+
                 var address = new Address
                 {
                     CustomerId = addressCreate.CustomerId,
@@ -41,7 +40,7 @@ namespace ECommerceApp.Services
 
                 var addressResponse = new AddressResponseDTO
                 {
-                    Id = address.id,
+                    Id = address.Id,   
                     CustomerId = address.CustomerId,
                     AddressLine1 = address.AddressLine1,
                     AddressLine2 = address.AddressLine2,
@@ -50,6 +49,7 @@ namespace ECommerceApp.Services
                     PostalCode = address.PostalCode,
                     Country = address.Country
                 };
+
                 return new ApiResponse<AddressResponseDTO>(200, addressResponse);
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace ECommerceApp.Services
         {
             try
             {
-                var address = await _context.Addresses.FirstOrDefaultAsync( a => a.id == addressUpdate.AddressId && a.CustomerId == addressUpdate.CustomerId);
+                var address = await _context.Addresses.FirstOrDefaultAsync( a => a.Id == addressUpdate.AddressId && a.CustomerId == addressUpdate.CustomerId);
                 if (address == null)
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Address not found");
@@ -119,7 +119,7 @@ namespace ECommerceApp.Services
                 }
                 var addresses = customer.Addresses.Select(address => new AddressResponseDTO
                 {
-                    Id = address.id,
+                    Id = address.Id,
                     CustomerId = address.CustomerId,
                     AddressLine1 = address.AddressLine1,
                     AddressLine2 = address.AddressLine2,

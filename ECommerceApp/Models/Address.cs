@@ -6,7 +6,7 @@ namespace ECommerceApp.Models
 {
     public class Address
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int CustomerId { get; set; }
