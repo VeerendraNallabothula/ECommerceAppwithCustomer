@@ -22,6 +22,7 @@ namespace ECommerceApp
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<AddressService>();
+            builder.Services.AddScoped<CategoryService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
