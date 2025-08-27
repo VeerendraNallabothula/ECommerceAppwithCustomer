@@ -23,6 +23,7 @@ namespace ECommerceApp
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<AddressService>();
             builder.Services.AddScoped<CategoryService>();
+            builder.Services.AddScoped<ProductService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
